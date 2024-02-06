@@ -1,0 +1,51 @@
+<div class="login_page">
+    <div class="login_form_container">
+      <div class="login_form">
+        <h2 style="color: red;">Register</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="input_group">
+            <input type="text" placeholder="Username" class="input_text" autocomplete="off" formControlName="username" />
+            <div *ngIf="registerForm.get('username')?.errors?.['required'] && registerForm.get('username')?.touched">
+              <span class="error-message" style="color: rgb(220, 0, 0);font-size: 18px;">Username is required.</span>
+            </div>
+            <div *ngIf="registerForm.get('username')?.errors?.['minlength']">
+              <span class="error-message" style="color: red;font-size: 18px;">Minimum 8 characters required for username.</span>
+            </div>
+            <div *ngIf="registerForm.get('username')?.errors?.['maxlength']">
+              <span class="error-message" style="color: red;font-size: 18px;">Maximum 20 characters allowed for username.</span>
+            </div>
+          </div>
+  
+  
+          <div class="input_group">
+            <input type="{{ passwordFieldType }}" placeholder="Password" class="input_text" autocomplete="off"
+              formControlName="password" />
+            <span class="password-toggle" (click)="togglePasswordVisibility()">
+              <i class="{{ passwordFieldType === 'password' ? 'fa fa-eye fa-thin' : 'fa fa-eye-slash' }}"></i>
+            </span>
+  
+            <div *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched">
+              <span class="error-message" style="color: rgb(209, 0, 0);font-size: 18px;">Password is required.</span>
+            </div>
+            <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+              <span class="error-message" style="color: red;font-size: 18px;">Minimum 8 characters required for password.</span>
+            </div>
+            <div *ngIf="registerForm.get('password')?.errors?.['maxlength']">
+              <span class="error-message" style="color: red;font-size: 18px;">Maximum 12 characters required for password.</span>
+            </div>
+            <div *ngIf="registerForm.get('password')?.errors?.['invalidPassword']">
+              <span class="error-message" style="color: red;font-size: 18px;">At least use one special symbol.</span>
+            </div>
+          </div>
+  
+          <div class="button_group" id="register_button">
+            <button type="submit" [disabled]="!registerForm.valid">Register</button>
+          </div>
+        </form>
+        <div class="footer">
+          <p style="color: whitesmoke;">Already have an account?</p>
+          <button (click)="goToLogin()">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>

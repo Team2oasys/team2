@@ -1,0 +1,50 @@
+<div class="login_page">
+    <div class="login-container">
+      <video autoplay muted loop class="video-background">
+        <source src="/assets/Login/production_id_3945144 (2160p).mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  
+    <div class="login_form_container">
+      <div class="login_form">
+        <h2 style="color: rgb(170, 1, 1);">Login</h2>
+        <form #login_form="ngForm" (ngSubmit)="log()">
+          <div class="input_group">
+            <input type="text" placeholder="Username" class="input_text" autocomplete="off" name="username"
+              [(ngModel)]="username" required #usernameField="ngModel" />
+            <div *ngIf="usernameField.invalid && (usernameField.dirty || usernameField.touched)" class="error">
+              <div *ngIf="usernameField.errors?.['required']">Username is required.</div>
+            </div>
+          </div>
+  
+          <div class="input_group">
+            <input type="{{ passwordFieldType }}" placeholder="Password" class="input_text" autocomplete="off"
+              name="password" [(ngModel)]="password" required #passwordField="ngModel" />
+  
+            <span (click)="togglePasswordVisibility()" id="onee" class="password-toggle">
+              <i class="{{ passwordFieldType === 'password' ? 'fa fa-eye fa-thin' : 'fa fa-eye-slash' }}"
+                style="color: black;"></i>
+            </span>
+  
+            <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="error">
+              <div *ngIf="passwordField.errors?.['required']">Password is required.</div>
+            </div>
+          </div>
+  
+          <div class="button_group" id="login_button">
+            <button type="submit" [disabled]="!login_form.valid">SignIn</button>
+          </div>
+  
+          <div class="alert-message" *ngIf="showAlert">
+            <p>{{ alertMessage }}</p>
+          </div>
+        </form>
+  
+        <div class="footer">
+          <p style="color: rgb(0, 0, 0);">Don't Have Account? Please Register</p>
+          <button (click)="sing()">SignUp</button>
+        </div>
+      </div>
+    </div>
+  </div>

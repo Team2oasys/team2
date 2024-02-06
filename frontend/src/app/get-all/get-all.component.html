@@ -1,0 +1,47 @@
+
+
+<div class="container-fluid"> 
+    <div class="row justify-content-center 
+            align-items-center" style="height:80px; background-color: rgb(19, 87, 190);color: rgb(245, 251, 251);"> 
+        <div class="col-3"></div> 
+        <div class="col-5  h1"> 
+          Notes!        </div> 
+        
+    </div> 
+    <button type="submit" (click)="logOut()" id="mal" class=" btn btn-warning">LogOut</button>
+    <div class="mt-2">
+        <button (click)="post()"  class="btn btn-secondary "> ADD TASK </button>
+
+    </div>
+<br>
+        <div class="row">
+        <div *ngFor="let l of list" class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+             
+             <div class="container">
+              <div class="row">
+                <div class="col"> <p class="card-text">{{ l.description }}</p></div>
+              <div class="col " style="margin-left: 50%;"><p class="card-text">{{ l.date }}</p></div>
+             
+              </div>
+             </div>
+              
+
+              
+            </div>
+            <div class="card-footer">
+              <button (click)="getById(l.id)" class="btn btn-primary me-2">List</button>
+              <button (click)="update(l.id)" class="btn btn-warning me-2">Update</button>
+              <button (click)="deleteid(l.id)" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+     
+
+
+
+
+

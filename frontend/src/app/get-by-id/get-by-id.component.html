@@ -1,0 +1,14 @@
+<div *ngIf="list" class="custom-container">
+    <div class="custom-content">
+        <!-- Uncomment the following line if you want to display the title -->
+        <!-- <h5 class="custom-title">{{ list.title }}</h5> -->
+        <p class="custom-text">{{ list.description }}</p>
+        <p class="custom-text">{{list.date}}</p>
+    </div>
+    <div class="custom-footer">
+        <button (click)="back()" class="btn btn-secondary">Back</button>
+    </div>
+</div>
+
+
+
